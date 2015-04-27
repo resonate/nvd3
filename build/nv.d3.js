@@ -1,4 +1,4 @@
-/* nvd3 version 1.7.1(https://github.com/novus/nvd3) 2015-02-08 */
+/* nvd3 version 1.7.1(https://github.com/novus/nvd3) 2015-04-27 */
 (function(){
 
 // set up main nv object on window
@@ -7264,7 +7264,7 @@ nv.models.multiBarHorizontal = function() {
                     .attr('text-anchor', function(d,i) { return getY(d,i) < 0 ? 'end' : 'start' })
                     .attr('y', x.rangeBand() / (data.length * 2))
                     .attr('dy', '.32em')
-                    .html(function(d,i) {
+                    .text(function(d,i) {
                         var t = valueFormat(getY(d,i))
                             , yerr = getYerr(d,i);
                         if (yerr === undefined)
@@ -7397,6 +7397,7 @@ nv.models.multiBarHorizontal = function() {
 
     return chart;
 };
+
 nv.models.multiBarHorizontalChart = function() {
     "use strict";
 
@@ -9357,7 +9358,7 @@ nv.models.scatter = function() {
             z0 = z0 || z;
 
             // Setup containers and skeleton of chart
-            var wrap = container.selectAll('g.nv-wrap.nv-scatter').data([data]);
+            var wrap = container.selectAll('g.nv-wrap.nv-scatter').remove().data([data]);
             var wrapEnter = wrap.enter().append('g').attr('class', 'nvd3 nv-wrap nv-scatter nv-chart-' + id + (singlePoint ? ' nv-single-point' : ''));
             var defsEnter = wrapEnter.append('defs');
             var gEnter = wrapEnter.append('g');
